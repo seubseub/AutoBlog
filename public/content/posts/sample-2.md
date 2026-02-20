@@ -3,7 +3,6 @@ title: Best AI Image Generators in 2026
 description: Exploring the top-rated AI image generation tools including Midjourney v7 and stable diffusion based platforms.
 category: Image AI
 tags: [Midjourney, Runway, DALL-E]
-image: /images/ai.jpg
 publishedAt: 2026-02-18
 published: true
 ---

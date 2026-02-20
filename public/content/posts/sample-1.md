@@ -3,7 +3,6 @@ title: ChatGPT vs Claude - Detailed Comparison
 description: Which AI chatbot is better for writing, coding, and logical reasoning? We compare ChatGPT-5 and Claude 4 Opus.
 category: Writing AI
 tags: [ChatGPT, Claude, LLM]
-image: /images/ai.jpg
 publishedAt: 2026-02-20
 published: true
 ---
