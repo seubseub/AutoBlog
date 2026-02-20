@@ -3,7 +3,13 @@ import PostList from '../../components/PostList';
 import Sidebar from '../../components/Sidebar';
 
 export function generateStaticParams() {
-  return [{ category: 'AI' }, { category: 'Dev' }, { category: 'Marketing' }];
+  return [
+    { category: 'Writing AI' },
+    { category: 'Image AI' },
+    { category: 'Coding AI' },
+    { category: 'Productivity AI' },
+    { category: 'AI Comparison' }
+  ];
 }
 
 export default async function CategoryPage({ params }: { params: Promise<{ category: string }> }) {
