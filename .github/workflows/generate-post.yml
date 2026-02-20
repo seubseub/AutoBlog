@@ -1,0 +1,41 @@
+name: Generate Blog Post
+
+on:
+  schedule:
+    - cron: '0 8 * * *'    # 08:00 UTC
+    - cron: '0 14 * * *'   # 14:00 UTC
+    - cron: '0 20 * * *'   # 20:00 UTC
+  workflow_dispatch:
+
+jobs:
+  generate-post:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate blog post
+        env:
+          GOOGLE_GENERATIVE_AI_KEY: ${{ secrets.GOOGLE_GENERATIVE_AI_KEY }}
+        run: npm run generate:post
+
+      - name: Commit and push
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "Blog Auto Generator"
+          git add public/content/posts/*.md
+          if ! git diff-index --quiet HEAD; then
+            git commit -m "chore: auto-generate blog post"
+            git push
+          fi

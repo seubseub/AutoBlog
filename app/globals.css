@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900;
+  }
+  h1 {
+    @apply text-4xl font-bold mb-4;
+  }
+  h2 {
+    @apply text-2xl font-semibold mb-3 mt-6;
+  }
+  h3 {
+    @apply text-xl font-medium mb-2 mt-4;
+  }
+  a {
+    @apply text-blue-600 hover:text-blue-800 transition-colors;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium;
+  }
+  .card {
+    @apply bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow;
+  }
+}
+
+/* Markdown Content Styles */
+.prose {
+  @apply max-w-none;
+}
+.prose h1 { @apply text-3xl font-bold mt-8 mb-4; }
+.prose h2 { @apply text-2xl font-bold mt-8 mb-4; }
+.prose p { @apply mb-4 leading-relaxed; }
+.prose ul { @apply list-disc list-inside mb-4; }
+.prose ol { @apply list-decimal list-inside mb-4; }
+.prose blockquote { @apply border-l-4 border-gray-300 pl-4 italic text-gray-700 my-4; }
+.prose img { @apply rounded-lg shadow-sm max-w-full h-auto my-6; }
+.prose code { @apply bg-gray-100 text-red-500 px-1 py-0.5 rounded text-sm; }
+.prose pre { @apply bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto my-6; }
+.prose pre code { @apply bg-transparent text-gray-100 p-0; }
