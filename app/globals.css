@@ -1,28 +1,19 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #4f46e5;
+  --color-secondary: #7c3aed;
+}
 
 @layer base {
   body {
     @apply bg-gray-50 text-gray-900;
   }
-  h1 {
-    @apply text-4xl font-bold mb-4;
-  }
-  h2 {
-    @apply text-2xl font-semibold mb-3 mt-6;
-  }
-  h3 {
-    @apply text-xl font-medium mb-2 mt-4;
-  }
-  a {
-    @apply text-blue-600 hover:text-blue-800 transition-colors;
-  }
 }
 
 @layer components {
   .btn-primary {
-    @apply px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium;
+    @apply px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors font-medium;
   }
   .card {
     @apply bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow;
@@ -30,9 +21,6 @@
 }
 
 /* Markdown Content Styles */
-.prose {
-  @apply max-w-none;
-}
 .prose h1 { @apply text-3xl font-bold mt-8 mb-4; }
 .prose h2 { @apply text-2xl font-bold mt-8 mb-4; }
 .prose p { @apply mb-4 leading-relaxed; }
