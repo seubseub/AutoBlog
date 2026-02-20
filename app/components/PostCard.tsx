@@ -2,44 +2,49 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { PostMeta } from '../lib/types';
 
-// 카테고리별 스타일 정의 (그라디언트, 이모지, 배지 색상)
-const CATEGORY_CONFIG: Record<string, { gradient: string; emoji: string; badge: string }> = {
-  'Writing AI': {
-    gradient: 'from-blue-500 to-purple-600',
-    emoji: '✍️',
-    badge: 'bg-blue-50 text-blue-700 border-blue-100',
-  },
-  'Image AI': {
-    gradient: 'from-pink-500 to-orange-500',
-    emoji: '🎨',
-    badge: 'bg-pink-50 text-pink-700 border-pink-100',
-  },
-  'Coding AI': {
-    gradient: 'from-green-500 to-teal-600',
-    emoji: '💻',
-    badge: 'bg-emerald-50 text-emerald-700 border-emerald-100',
-  },
-  'Productivity': {
-    gradient: 'from-yellow-500 to-orange-500',
-    emoji: '⚡',
-    badge: 'bg-amber-50 text-amber-700 border-amber-100',
-  },
-  'AI Comparison': {
-    gradient: 'from-purple-500 to-indigo-600',
-    emoji: '⚖️',
-    badge: 'bg-purple-50 text-purple-700 border-purple-100',
-  },
-};
-
-const DEFAULT_CONFIG = {
-  gradient: 'from-indigo-500 to-purple-600',
-  emoji: '🤖',
-  badge: 'bg-indigo-50 text-indigo-700 border-indigo-100',
-};
+function getCategoryStyle(category: string | undefined) {
+  switch (category) {
+    case 'Writing AI':
+      return {
+        thumbnail: 'bg-gradient-to-br from-blue-500 to-purple-600',
+        emoji: '✍️',
+        badge: 'bg-blue-50 text-blue-700 border border-blue-100',
+      };
+    case 'Image AI':
+      return {
+        thumbnail: 'bg-gradient-to-br from-pink-500 to-orange-500',
+        emoji: '🎨',
+        badge: 'bg-pink-50 text-pink-700 border border-pink-100',
+      };
+    case 'Coding AI':
+      return {
+        thumbnail: 'bg-gradient-to-br from-green-500 to-teal-600',
+        emoji: '💻',
+        badge: 'bg-emerald-50 text-emerald-700 border border-emerald-100',
+      };
+    case 'Productivity':
+      return {
+        thumbnail: 'bg-gradient-to-br from-yellow-500 to-orange-500',
+        emoji: '⚡',
+        badge: 'bg-amber-50 text-amber-700 border border-amber-100',
+      };
+    case 'AI Comparison':
+      return {
+        thumbnail: 'bg-gradient-to-br from-purple-500 to-indigo-600',
+        emoji: '⚖️',
+        badge: 'bg-purple-50 text-purple-700 border border-purple-100',
+      };
+    default:
+      return {
+        thumbnail: 'bg-gradient-to-br from-indigo-500 to-purple-600',
+        emoji: '🤖',
+        badge: 'bg-indigo-50 text-indigo-700 border border-indigo-100',
+      };
+  }
+}
 
 export default function PostCard({ post }: { post: PostMeta }) {
-  const config = post.category ? (CATEGORY_CONFIG[post.category] || DEFAULT_CONFIG) : DEFAULT_CONFIG;
-
+  const style = getCategoryStyle(post.category);
   const hasValidImage = post.image && (post.image.startsWith('/') || post.image.startsWith('http'));
 
   return (
@@ -54,8 +59,8 @@ export default function PostCard({ post }: { post: PostMeta }) {
             className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
         ) : (
-          <div className={`w-full h-full bg-gradient-to-br ${config.gradient} flex items-center justify-center text-5xl transition-transform duration-500 group-hover:scale-110`}>
-            <span className="drop-shadow-lg">{config.emoji}</span>
+          <div className={`w-full h-full flex items-center justify-center text-5xl transition-transform duration-500 group-hover:scale-110 ${style.thumbnail}`}>
+            <span className="drop-shadow-lg">{style.emoji}</span>
           </div>
         )}
       </Link>
@@ -64,7 +69,7 @@ export default function PostCard({ post }: { post: PostMeta }) {
         {/* 메타 정보 */}
         <div className="flex items-center justify-between mb-4">
           {post.category && (
-            <span className={`text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md border ${config.badge}`}>
+            <span className={`text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md ${style.badge}`}>
               {post.category}
             </span>
           )}

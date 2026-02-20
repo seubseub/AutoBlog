@@ -8,8 +8,8 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: '#4f46e5', // Indigo 600
-        secondary: '#7c3aed', // Purple 600
+        primary: '#4f46e5',
+        secondary: '#7c3aed',
       },
     },
   },
