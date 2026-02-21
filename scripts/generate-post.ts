@@ -78,13 +78,8 @@ async function generateBlogPost() {
       - 추가 정보: 포스트에 어울리는 제목, 카테고리, 태그(3~5개), 요약 설명(150자 내외)을 생성하세요.
 
       [출력 형식 가이드]
-      반드시 아래 JSON 형식을 포함하여 답변을 시작하고, 그 뒤에 마크다운 본문을 작성하세요.
-      {
-        "title": "생성된 제목",
-        "category": "적절한 카테고리",
-        "tags": ["태그1", "태그2", "태그3"],
-        "description": "요약 설명"
-      }
+      반드시 아래 형식을 정확히 따르세요. 코드블록(\`\`\`)을 사용하지 마세요.
+      {"title":"생성된 제목","category":"적절한 카테고리","tags":["태그1","태그2","태그3"],"description":"요약 설명"}
       ---
       (여기에 마크다운 본문 작성)
     `;
@@ -96,7 +91,13 @@ async function generateBlogPost() {
 
     // 5. JSON 데이터와 마크다운 분리
     const [jsonPart, ...contentParts] = fullText.split("---");
-    const metaData = JSON.parse(jsonPart.trim());
+    // Gemini가 ```json ... ``` 코드블록으로 감쌀 경우 제거
+    const cleanedJson = jsonPart
+      .replace(/^```json\s*/i, '')
+      .replace(/^```\s*/i, '')
+      .replace(/```\s*$/i, '')
+      .trim();
+    const metaData = JSON.parse(cleanedJson);
     const markdownContent = contentParts.join("---").trim();
 
     // 6. Front Matter 구성
