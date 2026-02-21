@@ -10,6 +10,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: 'ToolVerdict - AI Tools Review & Comparison',
   description: 'Discover and compare the best AI tools for your needs',
+  verification: {
+    google: 'BUicP3Dvzx48LMMrzUmDD99ca9znCGMDQdreaghAaiA',
+  },
 };
 
 export default function RootLayout({
