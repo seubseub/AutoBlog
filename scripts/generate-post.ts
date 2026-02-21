@@ -68,18 +68,23 @@ async function generateBlogPost() {
 
     // 3. 프롬프트 작성
     const prompt = `
-      당신은 전문 블로그 에디터입니다. 키워드 "${selectedKeyword}"를 바탕으로 독자들에게 유익하고 흥미로운 블로그 포스트를 작성해주세요.
+      당신은 AI 도구 전문 리뷰어입니다. 키워드 "${selectedKeyword}"를 바탕으로 실제 AI 도구들을 비교/리뷰하는 블로그 포스트를 작성해주세요.
+
+      [핵심 규칙 - 반드시 준수]
+      - 실제 존재하는 AI 도구명을 구체적으로 사용하세요. (예: ChatGPT, Claude, Gemini, Midjourney, Stable Diffusion, Runway, Notion AI, Jasper, Copy.ai, Perplexity, Cursor, GitHub Copilot, Zapier, Make, Synthesia 등)
+      - "에이전트 A", "도구 B" 같은 가상의 이름 절대 사용 금지
+      - 각 도구의 실제 특징, 가격, 장단점을 구체적으로 언급하세요
+      - 독자가 바로 사용해볼 수 있도록 실용적인 정보 중심으로 작성
 
       [요구사항]
       - 언어: 한국어
-      - 길이: 공백 포함 800~1200자 내외
-      - 구조: 매력적인 서론, 3~4개의 소주제(섹션), 명확한 결론
+      - 길이: 공백 포함 1000~1500자 내외
+      - 구조: 서론 → 도구별 상세 소개(3~5개) → 비교 요약 → 결론 및 추천
       - 형식: 마크다운(Markdown)
-      - 추가 정보: 포스트에 어울리는 제목, 카테고리, 태그(3~5개), 요약 설명(150자 내외)을 생성하세요.
 
       [출력 형식 가이드]
       반드시 아래 형식을 정확히 따르세요. 코드블록(\`\`\`)을 사용하지 마세요.
-      {"title":"생성된 제목","category":"적절한 카테고리","tags":["태그1","태그2","태그3"],"description":"요약 설명"}
+      {"title":"생성된 제목","category":"Writing AI 또는 Image AI 또는 Coding AI 또는 Productivity AI 또는 AI Comparison 중 하나","tags":["태그1","태그2","태그3"],"description":"요약 설명"}
       ---
       (여기에 마크다운 본문 작성)
     `;
