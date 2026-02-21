@@ -29,7 +29,7 @@ interface PostFrontMatter {
 const API_KEY = process.env.GOOGLE_GENERATIVE_AI_KEY;
 const KEYWORDS_PATH = path.join(process.cwd(), "scripts", "keywords.json");
 const POSTS_DIR = path.join(process.cwd(), "public", "content", "posts");
-const MODEL_NAME = "gemini-1.5-flash";
+const MODEL_NAME = "gemini-2.0-flash";
 
 if (!API_KEY) {
   console.error("오류: GOOGLE_GENERATIVE_AI_KEY 환경 변수가 설정되지 않았습니다.");
